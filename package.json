@@ -1,0 +1,17 @@
+{
+  "name": "anime-dl",
+  "version": "1.0.0",
+  "description": "Automatic anime torrentor",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "Neil Mehra",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^13.1.7"
+  },
+  "dependencies": {
+    "axios": "^0.21.1"
+  }
+}
