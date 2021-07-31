@@ -4,7 +4,8 @@
   "description": "Automatic anime torrentor",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "test": "electron ."
   },
   "author": "Neil Mehra",
   "license": "MIT",
