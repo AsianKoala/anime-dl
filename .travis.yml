@@ -1,38 +1,61 @@
-sudo: false
+matrix:
+  include:
+    - os: osx
+      osx_image: xcode9.4
+      language: node_js
+      node_js: "8"
+      env:
+        - ELECTRON_CACHE=$HOME/.cache/electron
+        - ELECTRON_BUILDER_CACHE=$HOME/.cache/electron-builder
 
-language: node_js
-node_js: "9.11.1"
+    # Windows currently doesn't support encrypted variables.
+    # Once supported uncomment this out & remove build with Docker
+    #
+    #- os: windows
+    #  language: node_js
+    #  node_js: "8"
 
-before_install:
-  - cd app
+    - os: linux
+      services: docker
+      language: generic
 
 cache:
+  yarn: true
   directories:
     - node_modules
-    - app/node_modules
     - $HOME/.cache/electron
     - $HOME/.cache/electron-builder
-    - $HOME/.npm/_prebuilds
 
-env:
-  global:
-    - ELECTRON_CACHE=$HOME/.cache/electron
-    - ELECTRON_BUILDER_CACHE=$HOME/.cache/electron-builder
+install:
+  - |
+    if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
+      brew install yarn;
+    fi
+script:
+  - |
+    if [ "$TRAVIS_OS_NAME" == "linux" ]; then
+      docker run --rm \
+        -e GH_TOKEN=$GH_TOKEN \
+        -v $PWD:/project \
+        -v ~/.cache/electron:/root/.cache/electron \
+        -v ~/.cache/electron-builder:/root/.cache/electron-builder \
+        electronuserland/builder:wine \
+        /bin/bash -c "yarn install --link-duplicates --pure-lockfile && yarn release --win"
+    elif [ "$TRAVIS_OS_NAME" == "windows" ]; then
+      npm install;
+      npm run release;
+    else
+      security create-keychain -p $KEYCHAIN_PASSWORD build.keychain;
+      security default-keychain -s build.keychain;
+      security unlock-keychain -p $KEYCHAIN_PASSWORD build.keychain;
+      echo $KEYSTORE | base64 --decode - > keystore.p12;
+      security import keystore.p12 -k build.keychain -P $KEYCHAIN_PASSWORD -T /usr/bin/codesign;
+      yarn install;
+      yarn release;
+    fi
+before_cache:
+  - rm -rf $HOME/.cache/electron-builder/wine
 
-jobs:
-  include:
-    - stage: Test
-    - stage: Deploy Windows & Mac
-      if: tag IS present
-      os: osx
-      osx_image: xcode10.1
-      script:
-        - npm run release -- --mac --win
-      before_cache:
-        - rm -rf $HOME/.cache/electron-builder/wine
-    - stage: Deploy linux
-      if: tag IS present
-      os: linux
-      dist: trusty
-      script:
-        - npm run release
+branches:
+  except:
+    - "/^v\\d+\\.\\d+\\.\\d+$/"
