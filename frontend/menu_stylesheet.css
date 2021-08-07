@@ -8,7 +8,7 @@ html {
 .bg-image {
     height: 100%;
     background-position: center;
-    background-repeat: no-repeat;
+    background-repeat: repeat;
     background-size: cover;
 
     opacity: 0.2;
@@ -39,10 +39,4 @@ html {
     left: 25%;
     width: 50%;
     text-align: center;
-}
-
-.settings-btn {
-    position: absolute;
-    top: 150px;
-    right: 7%;
 }

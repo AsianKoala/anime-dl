@@ -17,7 +17,7 @@ app.whenReady().then(() => {
         }
     })
 
-    win.loadFile('index.html')
+    win.loadFile('./frontend/index.html')
 
     win.on('close', function () {
         bg_randomizer.iterate()

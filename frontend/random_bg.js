@@ -20,7 +20,7 @@ module.exports = {
             curr_iter = 1
         }
 
-        var bg = 'url(/res/bg/' + curr_iter + '.jpg)'
+        var bg = 'url(../res/bg/' + curr_iter + '.jpg)'
         settings['background-name'] = bg
 
         fs.writeFileSync(name, JSON.stringify(settings))
