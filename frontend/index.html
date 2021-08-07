@@ -8,8 +8,36 @@
     <link rel="other stylesheet" href="menu_stylesheet.css">
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="get_curr_bg.js"></script>
+    <script src="load_settings_html.js"></script>
     <style>
         .settings-btn {
+            position: absolute;
+            top: 125px;
+            left: 75px;
+        }
+
+        .torrent-site-form {
+            position: absolute;
+            top: 250px;
+            left: 100px;
+            width: 80%;
+            opacity: 0.5;
+            color: black;
+        }
+
+        .torrent-site-form-label {
+            position: absolute;
+            top: 200px;
+            left: 100px;
+            padding: 10px;
+        }
+
+        option {
+            background-color: #D3D3D3;
+            color: black;
+        }
+
+        .back-btn {
             position: absolute;
             top: 125px;
             left: 75px;
@@ -25,7 +53,20 @@
     <div class="title-text">
         <h2>anime-dl</h2>
     </div>
-    <a href="settings.html" class="btn btn-outline-light settings-btn" role="button">settings</a>
+    <a class="btn btn-outline-light settings-btn main-content" role="button">settings</a>
+    <a href=" index.html" class="btn btn-outline-light back-btn" role="button" style="display: none">back</a>
+
+    <div class="form-group" style="display: none;">
+        <label for="torrent-sites-select" class="torrent-site-form-label">Preferred torrent site</label>
+        <select class="form-control torrent-site-form" id="torrent-sites-select">
+            <option class="torrent-option" value="nyaa">nyaa.si</option>
+            <option class="torrent-option" value="meow">meowinjapanese.cf</option>
+            <option class="torrent-option" value="eraw">eraw-raws.info</option>
+            <option class="torrent-option" value="tosho">animetosho.org</option>
+        </select>
+    </div>
+    </form>
+
 </body>
 
 </html>
