@@ -1,0 +1,48 @@
+body,
+html {
+    height: 100%;
+    background: black;
+    color: white;
+}
+
+.bg-image {
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    opacity: 0.2;
+}
+
+.azusa {
+    position: absolute;
+    top: 25px;
+    left: 8%;
+    height: 75px;
+    width: 75px;
+    border-radius: 50%;
+}
+
+.right-azusa {
+    position: absolute;
+    top: 25px;
+    right: 8%;
+    height: 75px;
+    width: 75px;
+    border-radius: 50%;
+}
+
+.title-text {
+    background-color: rgba(0, 0, 0, 0.4);
+    position: absolute;
+    top: 35px;
+    left: 25%;
+    width: 50%;
+    text-align: center;
+}
+
+.settings-btn {
+    position: absolute;
+    top: 150px;
+    right: 7%;
+}

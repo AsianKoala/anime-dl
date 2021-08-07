@@ -1,24 +1,15 @@
-const { app, BrowserWindow, Menu } = require('electron')
+const { app, BrowserWindow } = require('electron')
 const path = require('path')
+const fs = require('fs')
+const bg_randomizer = require('./frontend/random_bg.js')
 
-let menuTemplate = [
-    {
-        label: "File",
-        submenu: [
-            {
-                label: "Settings"
-            }
-        ]
-    },
-];
-
-
-function createWindow() {
+app.whenReady().then(() => {
     const win = new BrowserWindow({
         width: 800,
         height: 800,
         resizable: false,
         icon: path.join(__dirname, './res/azusa.ico'),
+        autoHideMenuBar: true,
         webPreferences: {
             nodeIntegration: true,
             contextIsolation: false,
@@ -28,13 +19,13 @@ function createWindow() {
 
     win.loadFile('index.html')
 
-    let menu = Menu.buildFromTemplate(menuTemplate);
-    Menu.setApplicationMenu(menu);
-}
+    win.on('close', function () {
+        bg_randomizer.iterate()
+    })
 
+    // win.on('close', function () {
 
-app.whenReady().then(() => {
-    createWindow()
+    // })
 
     app.on('activate', () => {
         if (BrowserWindow.getAllWindows().length === 0) {
