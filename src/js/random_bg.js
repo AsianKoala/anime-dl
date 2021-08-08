@@ -2,7 +2,7 @@ const fs = require('fs')
 
 module.exports = {
     iterate: function () {
-        var name = './frontend/settings.json'
+        var name = './src/settings.json'
         var settings = JSON.parse(fs.readFileSync(name).toString());
         console.log(name)
         console.log(settings)

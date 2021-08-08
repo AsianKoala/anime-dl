@@ -1,7 +1,7 @@
 const { app, BrowserWindow } = require('electron')
 const path = require('path')
 const fs = require('fs')
-const bg_randomizer = require('./frontend/js/random_bg.js')
+const bg_randomizer = require('./js/random_bg.js')
 require('@electron/remote/main').initialize()
 
 app.whenReady().then(() => {
@@ -9,7 +9,7 @@ app.whenReady().then(() => {
         width: 800,
         height: 800,
         resizable: false,
-        icon: path.join(__dirname, './res/azusa.ico'),
+        icon: path.join(__dirname, '../build/azusa.ico'),
         autoHideMenuBar: true,
         webPreferences: {
             nodeIntegration: true,
@@ -18,7 +18,7 @@ app.whenReady().then(() => {
         }
     })
 
-    win.loadFile('./frontend/index.html')
+    win.loadFile('./src/index.html')
 
     win.on('close', function () {
         bg_randomizer.iterate()

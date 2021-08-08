@@ -1,7 +1,7 @@
 const fs = require('fs')
 const { dialog } = require('@electron/remote')
 
-const settings_path = 'frontend/settings.json'
+const settings_path = './src/settings.json'
 const settings = JSON.parse(fs.readFileSync(settings_path).toString());
 
 
