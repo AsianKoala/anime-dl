@@ -1,9 +1,10 @@
 const fs = require('fs')
 const { dialog } = require('@electron/remote')
+const path = require('path')
+const app_path = require('electron').remote.app.getAppPath();
 
-const settings_path = './src/settings.json'
+const settings_path = path.join(app_path, '/src/settings.json')
 const settings = JSON.parse(fs.readFileSync(settings_path).toString());
-
 
 function fix_path(path) {
     return path.replace(/\\/g, "/");

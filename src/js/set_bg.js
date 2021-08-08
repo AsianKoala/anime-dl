@@ -1,8 +1,10 @@
 const fs = require('fs')
+const path = require('path')
+const app_path = require('electron').app.getAppPath();
 
 module.exports = {
     iterate: function () {
-        var name = './src/settings.json'
+        var name = path.join(app_path, '/src/settings.json')
         var settings = JSON.parse(fs.readFileSync(name).toString());
         console.log(name)
         console.log(settings)
@@ -20,7 +22,7 @@ module.exports = {
             curr_iter = 1
         }
 
-        var bg = 'url(../res/bg/' + curr_iter + '.jpg)'
+        var bg = 'url(' + path.join(app_path, '/res/bg/').replace(/\\/g, "/") + curr_iter + '.jpg)'
         settings['background-name'] = bg
 
         fs.writeFileSync(name, JSON.stringify(settings))
