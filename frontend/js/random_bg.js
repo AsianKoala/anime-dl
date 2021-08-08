@@ -24,6 +24,5 @@ module.exports = {
         settings['background-name'] = bg
 
         fs.writeFileSync(name, JSON.stringify(settings))
-
     }
 }

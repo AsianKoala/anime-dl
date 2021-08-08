@@ -90,6 +90,7 @@
     "run-script-os-fix": "^1.0.4"
   },
   "dependencies": {
+    "@electron/remote": "^1.2.1",
     "axios": "^0.21.1"
   }
 }

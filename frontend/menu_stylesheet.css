@@ -10,7 +10,6 @@ html {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-
     opacity: 0.2;
 }
 
@@ -33,10 +32,76 @@ html {
 }
 
 .title-text {
-    background-color: rgba(0, 0, 0, 0.4);
     position: absolute;
+    background-color: rgba(0, 0, 0, 0.4);
     top: 35px;
     left: 25%;
     width: 50%;
     text-align: center;
+}
+
+.main-shit {}
+
+.settings-shit {}
+
+.settings-btn {
+    position: absolute;
+    top: 125px;
+    left: 75px;
+}
+
+.torrent-site-form-label {
+    position: absolute;
+    top: 200px;
+    left: 150px;
+    padding: 7px;
+}
+
+.torrent-site-form {
+    position: absolute;
+    top: 250px;
+    left: 150px;
+    width: 55%;
+    opacity: 0.65;
+    color: black;
+}
+
+option {
+    background-color: #D3D3D3;
+    color: black;
+}
+
+.back-btn {
+    position: absolute;
+    top: 125px;
+    left: 75px;
+}
+
+.update-btn {
+    position: absolute;
+    bottom: 50px;
+    left: 47%;
+}
+
+.output-dir-input {
+    position: absolute;
+    top: 375px;
+    left: 150px;
+    width: 55%;
+    opacity: 0.65;
+    color: black;
+}
+
+.output-dir-label {
+    position: absolute;
+    top: 325px;
+    left: 150px;
+    padding: 7px;
+    color: white;
+}
+
+.select-dir-btn {
+    position: absolute;
+    top: 375px;
+    left: 625px;
 }

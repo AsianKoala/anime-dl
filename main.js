@@ -1,7 +1,8 @@
 const { app, BrowserWindow } = require('electron')
 const path = require('path')
 const fs = require('fs')
-const bg_randomizer = require('./frontend/random_bg.js')
+const bg_randomizer = require('./frontend/js/random_bg.js')
+require('@electron/remote/main').initialize()
 
 app.whenReady().then(() => {
     const win = new BrowserWindow({

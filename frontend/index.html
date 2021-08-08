@@ -7,68 +7,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
     <link rel="other stylesheet" href="menu_stylesheet.css">
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script src="get_curr_bg.js"></script>
-    <script src="handle_switching.js"></script>
-    <script src="init_html.js"></script>
-    <style>
-        .main-shit {}
-
-        .settings-shit {}
-
-        .settings-btn {
-            top: 125px;
-            left: 75px;
-        }
-
-        .torrent-site-form-label {
-            top: 200px;
-            left: 150px;
-            padding: 7px;
-        }
-
-        .torrent-site-form {
-            top: 250px;
-            left: 150px;
-            width: 55%;
-            opacity: 0.65;
-            color: black;
-        }
-
-        option {
-            background-color: #D3D3D3;
-            color: black;
-        }
-
-        .back-btn {
-            top: 125px;
-            left: 75px;
-        }
-
-        .update-btn {
-            bottom: 50px;
-            left: 47%;
-        }
-
-        .output-dir-input {
-            top: 375px;
-            left: 150px;
-            width: 55%;
-            opacity: 0.65;
-            color: black;
-        }
-
-        .output-dir-label {
-            top: 325px;
-            left: 150px;
-            padding: 7px;
-            color: white;
-        }
-
-        .select-dir-button {
-            top: 375px;
-            left: 625px;
-        }
-    </style>
+    <script src="./js/renderer.js"></script>
 
 </head>
 
@@ -86,18 +25,18 @@
         <div class="form-group settings-shit">
             <label for="torrent-sites-select" class="torrent-site-form-label">Preferred torrent site</label>
             <select class="form-control torrent-site-form" id="torrent-sites-select">
-                <option value="nyaa">nyaa.si</option>
-                <option value="meow">meowinjapanese.cf</option>
-                <option value="eraw">eraw-raws.info</option>
-                <option value="tosho">animetosho.org</option>
+                <option value="0">nyaa.si</option>
+                <option value="1">meowinjapanese.cf</option>
+                <option value="2">eraw-raws.info</option>
+                <option value="3">animetosho.org</option>
             </select>
         </div>
     </form>
 
-    <labeL for="output-dir-text" class="output-dir-label settings-shit">Output directory</labeL>
+    <label for="output-dir-text" class="output-dir-label settings-shit" id="output-dir-label">Output directory</labeL>
     <input class="form-control output-dir-input settings-shit" , type="text" id="output-dir-text">
-    <a class="btn btn-outline-light select-dir-button settings-shit">select folder</a>
-    <a class="btn btn-outline-light update-btn settings-shit" role="button">update</a>
+    <button class="btn btn-outline-light select-dir-btn settings-shit">select folder</button>
+    <button class="btn btn-outline-light update-btn settings-shit" role="button">update</button>
 </body>
 
 </html>
