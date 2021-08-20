@@ -2,6 +2,7 @@ const fs = require('fs')
 const { dialog } = require('@electron/remote')
 const path = require('path')
 const app_path = require('electron').remote.app.getAppPath();
+const { si } = require('nyaapi')
 
 const settings_path = path.join(app_path, '/src/settings.json')
 const settings = JSON.parse(fs.readFileSync(settings_path).toString());
@@ -16,6 +17,7 @@ function update_settings() {
 
 function init() {
     $('.settings-shit').css('display', 'none')
+    $('.add-anime-screen').css('display', 'none')
 }
 
 function get_curr_bg() {
@@ -25,13 +27,13 @@ function get_curr_bg() {
 function handle_switching() {
     $('.settings-btn').click(function () {
         $('.main-shit').fadeOut();
-        $('.settings-shit').delay(400).fadeIn();
+        $('.settings-shit').delay(250).fadeIn();
         return false;
     });
 
     $('.back-btn').click(function () {
         $('.settings-shit').fadeOut();
-        $('.main-shit').delay(400).fadeIn();
+        $('.main-shit').delay(250).fadeIn();
         return false;
     });
 }
@@ -88,6 +90,19 @@ function handle_output_dir() {
     });
 }
 
+function add_anime() {
+    $('.add-anime-btn').click(function () {
+        $('.main-shit').fadeOut();
+        $('.add-anime-screen').delay(250).fadeIn();
+        return false;
+    });
+
+    $('.add-back-btn').click(function () {
+        $('.add-anime-screen').fadeOut();
+        $('.main-shit').delay(250).fadeIn();
+    })
+}
+
 function main() {
     $(document).ready(function () {
         init();
@@ -95,6 +110,7 @@ function main() {
         handle_switching();
         handle_output_dir();
         handle_preferred_site();
+        add_anime();
     });
 }
 
